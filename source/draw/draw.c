@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:40 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/27 10:14:46 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/28 16:16:09 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,37 @@ t_vec3	ray_tracing(t_vec3 ro, t_vec3 rd)
 	}
 }
 
+void	_draw(t_view view, t_vec2 pixel, float block_size ,t_vec3 col)
+{
+	float	x;
+	float	y;
+	t_vec2	_pixel;
+	 
+
+	y = pixel.y;
+	while (y < pixel.y + block_size)
+	{
+		x = pixel.x;
+		while (x < pixel.x + block_size)
+		{
+			_pixel.x = x;
+			_pixel.y = y;
+			write_pixel(view, _pixel, col);
+			x += 1;
+		}
+		y += 1;
+	}
+}
+
 void	draw(t_scene scene)
 {
 	t_vec2	pixel;
 	t_vec3	direction;
 	t_vec3	col;
+	float	block_size;
 
 	pixel.y = 0.0;
+	block_size = 8;
 	while (pixel.y < HEIGHT)
 	{
 		pixel.x = 0.0;
@@ -61,10 +85,16 @@ void	draw(t_scene scene)
 			direction = vec3_norm(vec3_new(scene.focus, pixel.x - WIDTH / 2.0, pixel.y - HEIGHT / 2.0));
 			direction = vec3_mulmat(direction, scene.matrix);
 			col = ray_tracing(scene.camera.location, direction);
-			write_pixel(scene.view, pixel, col);
-			pixel.x += 1.0;
+			_draw(scene.view, pixel, block_size, col);
+			pixel.x += block_size;
 		}
-		pixel.y += 1.0;
+		pixel.y += block_size;
 	}
 	mlx_put_image_to_window(scene.mlx.mlx, scene.mlx.win, scene.mlx.canvas, 0, 0);
 }
+
+// build
+// find
+// identify
+// compute hit point
+// color
