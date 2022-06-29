@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:21 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/28 18:55:22 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/29 13:52:31 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,17 @@ t_bool	ismovement(int key, t_scene *scene)
 
 t_bool	isblock(int key, t_scene *scene)
 {
-	if (key == KEY_ONE)
+	if (key == KEY_PLUS)
+	{
+		if (scene->block != 1)
+			scene->block /= 2;
+	}
+	else if (key == KEY_MINUS)
+	{
+		if (scene->block != 128)
+			scene->block *= 2;
+	}
+	else if (key == KEY_ONE)
 		scene->block = 1;
 	else if (key == KEY_TWO)
 		scene->block = 2;

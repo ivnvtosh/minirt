@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:37 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/29 00:23:21 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/29 13:58:34 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,13 @@ t_sphere	*get_spheres(int count)
 	// spheres[2].color = vec3_new(0.3, 0.9, 0.25);
 	spheres[2].radius = 200.0;
 
+	spheres[3].location = vec3_new(2000.0, 2000.0, -1000.0);
+	spheres[3].rotation = vec3_new(0.0, 0.0, 0.0);
+	spheres[3].scale = vec3_new(1.0, 1.0, 1.0);
+	spheres[3].color = vec3_newv(1.0);
+	// spheres[3].color = vec3_new(0.3, 0.9, 0.25);
+	spheres[3].radius = 400.0;
+
 	return (spheres);
 }
 
@@ -78,18 +85,18 @@ t_light	*get_lights(int count)
 	{
 		exit(1);
 	}
-	lights[0].location = vec3_new(-600.0, 0.0, -5000.0);
-	// lights[0].color = vec3_newv(1.0, 0.2, 1.0);
-	lights[0].color = vec3_newv(1.0);
-	lights[0].intensity = 0.3;
-	lights[1].location = vec3_new(-300.0, -5000.0, -500.0);
-	// lights[1].color = vec3_new(0.4, 0.8, 0.1);
-	lights[1].color = vec3_newv(1.0);
-	lights[1].intensity = 0.3;
-	lights[2].location = vec3_new(-300.0, 1000.0, 1000.0);
-	// lights[2].color = vec3_new(0.9, 0.1, 0.1);
-	lights[2].color = vec3_newv(1.0);
-	lights[2].intensity = 0.3;
+	lights[0].location = vec3_new(-600.0, 0.0, -1000.0);
+	lights[0].color = vec3_new(0.0, 0.2, 1.0);
+	// lights[0].color = vec3_newv(1.0);
+	lights[0].intensity = 0.8;
+	lights[1].location = vec3_new(-300.0, -1000.0, -500.0);
+	lights[1].color = vec3_new(0.4, 0.8, 0.1);
+	// lights[1].color = vec3_newv(1.0);
+	lights[1].intensity = 0.8;
+	lights[2].location = vec3_new(-300.0, 500.0, 500.0);
+	lights[2].color = vec3_new(0.9, 0.1, 0.1);
+	// lights[2].color = vec3_newv(1.0);
+	lights[2].intensity = 0.8;
 	return (lights);
 }
 
@@ -111,7 +118,7 @@ t_scene	parser(char *path)
 	matrix_rotate(scene.matrix, scene.camera.rotation);
 	scene.block = 4;
 
-	scene.count.sphere = 3;
+	scene.count.sphere = 4;
 	scene.spheres = get_spheres(scene.count.sphere);
 	
 	scene.count.light = 3;

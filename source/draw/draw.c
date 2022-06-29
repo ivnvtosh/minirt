@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:40 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/29 00:35:17 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/29 14:04:59 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,18 @@ t_vec3	define_color(t_scene scene, t_ray ray, t_sphere sphere, float it)
 
 		t_ray newray;
 
-		newray.direction = vec3_new(-light.x,  -light.y, -light.z);
-		newray.start = vec3_add(ray.start, vec3_mulv(ray.direction, it - 1));
+		newray.start = vec3_add(ray.start, vec3_mulv(ray.direction, it - 100));
+		newray.direction = vec3_norm(vec3_sub(lights[i].location, newray.start));
 
 		color = ray_tracing(scene, newray, TRUE);
-		if ((color.x == 0.0 && color.y == 0.0 && color.z == 0.0))
+		if (!(color.x == 0.0 && color.y == 0.0 && color.z == 0.0))
 		{
 			i += 1;
 			continue ;
 		}
+
+
+
 		float	dot;
 	
 		dot = vec3_dot(light, n);
@@ -80,13 +83,16 @@ t_vec3	define_color(t_scene scene, t_ray ray, t_sphere sphere, float it)
 		color = vec3_add(color, specular);
 		color = vec3_mulv(color, lights[i].intensity);
 		color = vec3_add(color, vec3_mulv(sphere.color, 0.05));
+	
 		allcolor = vec3_add(allcolor, color);
+
 		i += 1;
 	}
 	
 	allcolor.x = minf(allcolor.x, 1.0);
 	allcolor.y = minf(allcolor.y, 1.0);
 	allcolor.z = minf(allcolor.z, 1.0);
+
 	return (allcolor);
 }
 
