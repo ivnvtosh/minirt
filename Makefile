@@ -6,7 +6,7 @@
 #    By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/26 04:12:14 by ccamie            #+#    #+#              #
-#    Updated: 2022/06/27 09:09:11 by ccamie           ###   ########.fr        #
+#    Updated: 2022/06/28 22:21:52 by ccamie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,6 @@ FUNCTIONS	=	event.c					\
 
 FUNCTIONS	+=	$(addprefix draw/,		\
 				draw.c					\
-				parallelepiped.c		\
 				reflect.c				\
 				sphere.c				\
 				write.c					\

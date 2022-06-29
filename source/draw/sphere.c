@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:44 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/27 10:15:05 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/28 18:36:35 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_vec2	draw_sphere(t_vec3 ro, t_vec3 rd, float ra)
 	h = b * b - c;
 	if (h < 0.0)
 	{
-		return (vec2_new(-1.0, 0.0));
+		return (vec2_new(-1.0, -1.0));
 	}
 	else
 	{

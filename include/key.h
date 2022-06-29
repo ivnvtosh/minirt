@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 04:10:14 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/27 05:45:32 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/28 18:44:52 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@
 # define KEY_Q		12
 # define KEY_W		13
 # define KEY_E		14
+# define KEY_ONE	18
 # define KEY_TWO	19
 # define KEY_THREE	20
+# define KEY_FOUR	21
+# define KEY_FIVE	23
 # define KEY_PLUS	24
 # define KEY_MINUS	27
 # define KEY_SCRG	30

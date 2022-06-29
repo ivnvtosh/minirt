@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:21 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/27 10:11:18 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/28 18:55:22 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,25 @@ t_bool	ismovement(int key, t_scene *scene)
 	vector = vec3_mulmat_xy(vector, scene->matrix);
 	vector = vec3_add(scene->camera.location, vec3_mulv(vector, 50.0));
 	scene->camera.location = vector;
+	draw(*scene);
+	return (TRUE);
+}
+
+t_bool	isblock(int key, t_scene *scene)
+{
+	if (key == KEY_ONE)
+		scene->block = 1;
+	else if (key == KEY_TWO)
+		scene->block = 2;
+	else if (key == KEY_THREE)
+		scene->block = 4;
+	else if (key == KEY_FOUR)
+		scene->block = 8;
+	else if (key == KEY_FIVE)
+		scene->block = 16;
+	else
+		return (FALSE);
+	draw(*scene);
 	return (TRUE);
 }
 
@@ -41,7 +60,10 @@ int	key_pressed(int key, t_scene *scene)
 {
 	if (ismovement(key, scene) == TRUE)
 	{
-		draw(*scene);
+		return (0);
+	}
+	else if (isblock(key, scene) == TRUE)
+	{
 		return (0);
 	}
 	else if (key == KEY_ESC)
@@ -51,8 +73,6 @@ int	key_pressed(int key, t_scene *scene)
 	else
 	{
 		printf("key: %d\n", key);
-		return (0);
 	}
-	draw(*scene);
 	return (0);
 }
