@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:40 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/29 14:04:59 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/29 22:47:32 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ t_vec3	define_color(t_scene scene, t_ray ray, t_sphere sphere, float it)
 	allcolor = vec3_newv(0.0);
 	while (i < scene.count.light)
 	{
-		light = vec3_norm(lights[i].location);
+		light = vec3_norm(vec3_sub(lights[i].location, sphere.location));
 		n = vec3_norm(vec3_add(vec3_sub(ray.start, sphere.location), vec3_mulv(ray.direction, it)));
 
 		t_ray newray;
 
-		newray.start = vec3_add(ray.start, vec3_mulv(ray.direction, it - 100));
+		newray.start = vec3_add(ray.start, vec3_mulv(ray.direction, it - 1));
 		newray.direction = vec3_norm(vec3_sub(lights[i].location, newray.start));
 
 		color = ray_tracing(scene, newray, TRUE);
