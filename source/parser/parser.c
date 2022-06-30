@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:37 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/29 23:12:09 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/07/01 01:50:20 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,61 +45,30 @@ t_sphere	*get_spheres(int count)
 	{
 		exit(1);
 	}
-	spheres[0].location = vec3_new(500.0, 0.0, 0.0);
+
+	spheres[0].location = vec3_new(500.0, 250.0, 0.0);
 	spheres[0].rotation = vec3_new(0.0, 0.0, 0.0);
 	spheres[0].scale = vec3_new(1.0, 1.0, 1.0);
 	spheres[0].color = vec3_newv(1.0);
-	// spheres[0].color = vec3_new(0.2, 0.3, 0.75);
-	spheres[0].radius = 300.0;
+	spheres[0].radius = 50.0;
 
-	spheres[1].location = vec3_new(550.0, 500.0, 0.0);
+	spheres[1].location = vec3_new(500.0, -150.0, 0.0);
 	spheres[1].rotation = vec3_new(0.0, 0.0, 0.0);
 	spheres[1].scale = vec3_new(1.0, 1.0, 1.0);
 	spheres[1].color = vec3_newv(1.0);
-	// spheres[1].color = vec3_new(0.8, 0.1, 0.25);
-	spheres[1].radius = 100.0;
+	spheres[1].radius = 50.0;
 
-	spheres[2].location = vec3_new(600.0, 300.0, -100.0);
+	spheres[2].location = vec3_new(500.0, 550.0, 0.0);
 	spheres[2].rotation = vec3_new(0.0, 0.0, 0.0);
 	spheres[2].scale = vec3_new(1.0, 1.0, 1.0);
 	spheres[2].color = vec3_newv(1.0);
-	// spheres[2].color = vec3_new(0.3, 0.9, 0.25);
 	spheres[2].radius = 200.0;
 
-	spheres[3].location = vec3_new(2000.0, 2000.0, -1000.0);
+	spheres[3].location = vec3_new(500.0, -550.0, 0.0);
 	spheres[3].rotation = vec3_new(0.0, 0.0, 0.0);
 	spheres[3].scale = vec3_new(1.0, 1.0, 1.0);
 	spheres[3].color = vec3_newv(1.0);
-	// spheres[3].color = vec3_new(0.3, 0.9, 0.25);
-	spheres[3].radius = 400.0;
-
-	spheres[4].location = vec3_new(-600.0, 600.0, 100.0);
-	spheres[4].rotation = vec3_new(0.0, 0.0, 0.0);
-	spheres[4].scale = vec3_new(1.0, 1.0, 1.0);
-	spheres[4].color = vec3_newv(1.0);
-	// spheres[3].color = vec3_new(0.3, 0.9, 0.25);
-	spheres[4].radius = 50.0;
-
-	spheres[5].location = vec3_new(-300.0, 300.0, -500.0);
-	spheres[5].rotation = vec3_new(0.0, 0.0, 0.0);
-	spheres[5].scale = vec3_new(1.0, 1.0, 1.0);
-	spheres[5].color = vec3_newv(1.0);
-	// spheres[3].color = vec3_new(0.3, 0.9, 0.25);
-	spheres[5].radius = 75.0;
-
-	spheres[6].location = vec3_new(-300.0, 300.0, 700.0);
-	spheres[6].rotation = vec3_new(0.0, 0.0, 0.0);
-	spheres[6].scale = vec3_new(1.0, 1.0, 1.0);
-	spheres[6].color = vec3_newv(1.0);
-	// spheres[3].color = vec3_new(0.3, 0.9, 0.25);
-	spheres[6].radius = 150.0;
-
-	spheres[7].location = vec3_new(300.0, 300.0, 50.0);
-	spheres[7].rotation = vec3_new(0.0, 0.0, 0.0);
-	spheres[7].scale = vec3_new(1.0, 1.0, 1.0);
-	spheres[7].color = vec3_newv(1.0);
-	// spheres[3].color = vec3_new(0.3, 0.9, 0.25);
-	spheres[7].radius = 100.0;
+	spheres[3].radius = 200.0;
 
 	return (spheres);
 }
@@ -113,18 +82,15 @@ t_light	*get_lights(int count)
 	{
 		exit(1);
 	}
-	lights[0].location = vec3_new(-600.0, 0.0, -1000.0);
-	lights[0].color = vec3_new(0.0, 0.2, 1.0);
-	// lights[0].color = vec3_newv(1.0);
-	lights[0].intensity = 0.2;
-	lights[1].location = vec3_new(-300.0, -1000.0, -500.0);
-	lights[1].color = vec3_new(0.4, 0.8, 0.1);
-	// lights[1].color = vec3_newv(1.0);
-	lights[1].intensity = 0.2;
-	lights[2].location = vec3_new(-300.0, 500.0, 500.0);
-	lights[2].color = vec3_new(0.9, 0.1, 0.1);
-	// lights[2].color = vec3_newv(1.0);
-	lights[2].intensity = 1.0;
+
+	lights[0].location = vec3_new(500.0, 0.0, 50.0);
+	lights[0].color = vec3_newv(1.0);
+	lights[0].intensity = 0.5;
+
+	lights[1].location = vec3_new(500.0, 0.0, -50.0);
+	lights[1].color = vec3_newv(1.0);
+	lights[1].intensity = 0.5;
+
 	return (lights);
 }
 
@@ -133,24 +99,26 @@ t_scene	parser(char *path)
 	t_scene	scene;
 
 	(void)path;
+
 	scene.mlx = set_mlx();
 	scene.view = set_view(scene.mlx.canvas);
+
 	scene.camera.location = vec3_new(-500.0, 0.0, 0.0);
 	scene.camera.rotation = vec3_new(0.0, 0.0, 0.0);
-	vec3_print("camera.lot", scene.camera.location);
-	// vec3_print("camera.rot", scene.camera.rotation);
 	scene.camera.fov = 60.0;
 	scene.camera.focus = WIDTH / 2 / tanf(scene.camera.fov / 2 * M_PI / 180);
 
 	matrix_new(scene.matrix);
 	matrix_rotate(scene.matrix, scene.camera.rotation);
+
 	scene.block = 8;
 
-	scene.count.sphere = 8;
+	scene.count.sphere = 4;
 	scene.spheres = get_spheres(scene.count.sphere);
-	
-	scene.count.light = 3;
+
+	scene.count.light = 2;
 	scene.lights = get_lights(scene.count.light);
-	
+
+	scene.smooth = FALSE;
 	return (scene);
 }

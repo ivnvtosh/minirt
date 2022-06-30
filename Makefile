@@ -6,7 +6,7 @@
 #    By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/26 04:12:14 by ccamie            #+#    #+#              #
-#    Updated: 2022/06/28 22:21:52 by ccamie           ###   ########.fr        #
+#    Updated: 2022/07/01 01:29:12 by ccamie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ FUNCTIONS	+=	$(addprefix parser/,	\
 FUNCTIONS	+=	$(addprefix utils/,		\
 				matrix_rotate.c			\
 				maxf.c					\
+				minf.c					\
 				terminate.c				\
 				vec3_mulmat.c			\
 				)
@@ -86,8 +87,10 @@ FUNCTIONS	+=	$(addprefix vec2/,		\
 
 FUNCTIONS	+=	$(addprefix vec3/,		\
 				add.c					\
+				divide.c				\
 				dot_product.c			\
 				lenght.c				\
+				map.c					\
 				multiply.c				\
 				new.c					\
 				normalize.c				\

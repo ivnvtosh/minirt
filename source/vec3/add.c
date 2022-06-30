@@ -6,11 +6,19 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:25 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/26 01:21:26 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/07/01 01:27:34 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec3.h"
+
+t_vec3	vec3_addv(t_vec3 vec, float value)
+{
+	vec.x += value;
+	vec.y += value;
+	vec.z += value;
+	return (vec);
+}
 
 t_vec3	vec3_add(t_vec3 a, t_vec3 b)
 {

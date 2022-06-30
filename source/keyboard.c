@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:21 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/29 13:52:31 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/07/01 00:46:14 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,17 +40,7 @@ t_bool	ismovement(int key, t_scene *scene)
 
 t_bool	isblock(int key, t_scene *scene)
 {
-	if (key == KEY_PLUS)
-	{
-		if (scene->block != 1)
-			scene->block /= 2;
-	}
-	else if (key == KEY_MINUS)
-	{
-		if (scene->block != 128)
-			scene->block *= 2;
-	}
-	else if (key == KEY_ONE)
+	if (key == KEY_ONE)
 		scene->block = 1;
 	else if (key == KEY_TWO)
 		scene->block = 2;
@@ -66,6 +56,18 @@ t_bool	isblock(int key, t_scene *scene)
 	return (TRUE);
 }
 
+t_bool	bool_reverse(t_bool say)
+{
+	if (say == TRUE)
+	{
+		return (FALSE);
+	}
+	else
+	{
+		return (TRUE);
+	}
+}
+
 int	key_pressed(int key, t_scene *scene)
 {
 	if (ismovement(key, scene) == TRUE)
@@ -75,6 +77,23 @@ int	key_pressed(int key, t_scene *scene)
 	else if (isblock(key, scene) == TRUE)
 	{
 		return (0);
+	}
+	else if (key == KEY_C)
+	{
+		scene->smooth = bool_reverse(scene->smooth);
+		draw(*scene);
+	}
+	else if (key == KEY_PLUS)
+	{
+		scene->camera.fov += 1.0;
+		scene->camera.focus = WIDTH / 2 / tanf(scene->camera.fov / 2 * M_PI / 180);
+		draw(*scene);
+	}
+	else if (key == KEY_MINUS)
+	{
+		scene->camera.fov -= 1.0;
+		scene->camera.focus = WIDTH / 2 / tanf(scene->camera.fov / 2 * M_PI / 180);
+		draw(*scene);
 	}
 	else if (key == KEY_ESC)
 	{

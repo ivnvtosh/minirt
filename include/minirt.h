@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:03 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/28 18:28:04 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/30 02:52:24 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ struct s_scene
 	struct s_vec2	mouse;
 	t_mat			matrix;
 	int				block;
+	t_bool			smooth;
 };
 
 typedef struct s_obj	t_obj;
@@ -108,6 +109,7 @@ int		terminate(t_scene *scene);
 
 void	matrix_rotate(t_mat matrix, t_vec3 angle);
 float	maxf(float a, float b);
+float	minf(float a, float b);
 t_vec3	vec3_mulmat(t_vec3 vec, t_mat matrix);
 t_vec3	vec3_mulmat_xy(t_vec3 vec, t_mat matrix);
 

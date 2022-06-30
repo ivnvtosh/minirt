@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new.c                                              :+:      :+:    :+:   */
+/*   minf.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 01:21:30 by ccamie            #+#    #+#             */
-/*   Updated: 2022/07/01 01:27:59 by ccamie           ###   ########.fr       */
+/*   Created: 2022/06/27 06:33:01 by ccamie            #+#    #+#             */
+/*   Updated: 2022/06/30 01:57:56 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "vec3.h"
+#include "minirt.h"
 
-t_vec3	vec3_newv(float value)
+float	minf(float a, float b)
 {
-	t_vec3	new;
-
-	new.x = value;
-	new.y = value;
-	new.z = value;
-	return (new);
-}
-
-t_vec3	vec3_new(float x, float y, float z)
-{
-	t_vec3	new;
-
-	new.x = x;
-	new.y = y;
-	new.z = z;
-	return (new);
+	if (a < b)
+	{
+		return (a);
+	}
+	else
+	{
+		return (b);
+	}
 }
