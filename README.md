@@ -12,8 +12,7 @@ block size 2x2
 ![New Project2](https://user-images.githubusercontent.com/87498837/176792255-c656da3e-1362-41cb-8f9a-ff448d9cbee4.png)
 block size 4x4
 ![New Project3](https://user-images.githubusercontent.com/87498837/176792260-6b6b8888-a292-4f1f-9982-5818ead43d4f.png)
-block size 8x8q
-block size 2x2
+block size 8x8
 ![New Project4](https://user-images.githubusercontent.com/87498837/176792263-ca5db020-26c5-4c27-8e29-e25ee8cbf26f.png)
 
 
