@@ -6,9 +6,14 @@ Mini Ray Tracer. This project is an introduction to the beautiful world of Raytr
 <img width="1192" alt="Screenshot 2022-07-01 at 01 50 12" src="https://user-images.githubusercontent.com/87498837/176791518-79511e86-4ca5-4d4b-aa90-3dbd77ce50d9.png">
 
 # Block size and Smooth
+block size 1x1
 ![New Project1](https://user-images.githubusercontent.com/87498837/176792246-95659be0-8fc3-4723-bd6a-46f1f3801cd6.png)
+block size 2x2
 ![New Project2](https://user-images.githubusercontent.com/87498837/176792255-c656da3e-1362-41cb-8f9a-ff448d9cbee4.png)
+block size 4x4
 ![New Project3](https://user-images.githubusercontent.com/87498837/176792260-6b6b8888-a292-4f1f-9982-5818ead43d4f.png)
+block size 8x8q
+block size 2x2
 ![New Project4](https://user-images.githubusercontent.com/87498837/176792263-ca5db020-26c5-4c27-8e29-e25ee8cbf26f.png)
 
 
