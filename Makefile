@@ -6,7 +6,7 @@
 #    By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/26 04:12:14 by ccamie            #+#    #+#              #
-#    Updated: 2022/07/01 01:29:12 by ccamie           ###   ########.fr        #
+#    Updated: 2022/07/02 16:05:25 by ccamie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -117,7 +117,7 @@ $(FOLDER)	:
 				$(MKDIR) $@
 
 libmlx	:
-				make -C libmlx
+				@make -C libmlx
 
 object/%.o	:	source/%.c $(HEADER)
 				@$(CC) $(CPPFLAGS) -c $< -o $@

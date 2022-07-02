@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:40 by ccamie            #+#    #+#             */
-/*   Updated: 2022/07/01 01:47:28 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/07/02 16:02:47 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,6 +133,7 @@ t_vec3	ray_trace(t_scene scene, t_ray ray)
 		int		i;
 
 		i = 0;
+		allcolor = vec3_newv(0.0);
 		while (i < scene.count.light)
 		{
 			t_vec3	direction;
@@ -233,4 +234,6 @@ void	draw(t_scene scene)
 	{
 		_draw(scene);
 	}
+	vec3_print("loc", scene.camera.location);
+	vec3_print("rot", scene.camera.rotation);
 }

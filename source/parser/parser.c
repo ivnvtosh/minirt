@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:37 by ccamie            #+#    #+#             */
-/*   Updated: 2022/07/01 01:50:20 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/07/02 16:04:59 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,29 +46,17 @@ t_sphere	*get_spheres(int count)
 		exit(1);
 	}
 
-	spheres[0].location = vec3_new(500.0, 250.0, 0.0);
+	spheres[0].location = vec3_new(0.0, 0.0, 50.0);
 	spheres[0].rotation = vec3_new(0.0, 0.0, 0.0);
 	spheres[0].scale = vec3_new(1.0, 1.0, 1.0);
 	spheres[0].color = vec3_newv(1.0);
 	spheres[0].radius = 50.0;
 
-	spheres[1].location = vec3_new(500.0, -150.0, 0.0);
+	spheres[1].location = vec3_new(0.0, 0.0, 1100.0);
 	spheres[1].rotation = vec3_new(0.0, 0.0, 0.0);
 	spheres[1].scale = vec3_new(1.0, 1.0, 1.0);
 	spheres[1].color = vec3_newv(1.0);
-	spheres[1].radius = 50.0;
-
-	spheres[2].location = vec3_new(500.0, 550.0, 0.0);
-	spheres[2].rotation = vec3_new(0.0, 0.0, 0.0);
-	spheres[2].scale = vec3_new(1.0, 1.0, 1.0);
-	spheres[2].color = vec3_newv(1.0);
-	spheres[2].radius = 200.0;
-
-	spheres[3].location = vec3_new(500.0, -550.0, 0.0);
-	spheres[3].rotation = vec3_new(0.0, 0.0, 0.0);
-	spheres[3].scale = vec3_new(1.0, 1.0, 1.0);
-	spheres[3].color = vec3_newv(1.0);
-	spheres[3].radius = 200.0;
+	spheres[1].radius = 1000.0;
 
 	return (spheres);
 }
@@ -83,13 +71,17 @@ t_light	*get_lights(int count)
 		exit(1);
 	}
 
-	lights[0].location = vec3_new(500.0, 0.0, 50.0);
-	lights[0].color = vec3_newv(1.0);
-	lights[0].intensity = 0.5;
+	lights[0].location = vec3_new(-100.0, -100.0, -200.0);
+	lights[0].color = vec3_new(0.0, 0.0, 1.0);
+	lights[0].intensity = 1.0;
 
-	lights[1].location = vec3_new(500.0, 0.0, -50.0);
-	lights[1].color = vec3_newv(1.0);
-	lights[1].intensity = 0.5;
+	lights[1].location = vec3_new(75.0, 750., -200.0);
+	lights[1].color = vec3_new(1.0, 0.0, 0.0);
+	lights[1].intensity = 1.0;
+
+	lights[2].location = vec3_new(-150.0, 200.0, -200.0);
+	lights[2].color = vec3_new(0.0, 1.0, 0.0);
+	lights[2].intensity = 1.0;
 
 	return (lights);
 }
@@ -103,8 +95,8 @@ t_scene	parser(char *path)
 	scene.mlx = set_mlx();
 	scene.view = set_view(scene.mlx.canvas);
 
-	scene.camera.location = vec3_new(-500.0, 0.0, 0.0);
-	scene.camera.rotation = vec3_new(0.0, 0.0, 0.0);
+	scene.camera.location = vec3_new(250.0, 130.0, -75.0);
+	scene.camera.rotation = vec3_new(0.0, 26.0, 152.0);
 	scene.camera.fov = 60.0;
 	scene.camera.focus = WIDTH / 2 / tanf(scene.camera.fov / 2 * M_PI / 180);
 
@@ -113,10 +105,10 @@ t_scene	parser(char *path)
 
 	scene.block = 8;
 
-	scene.count.sphere = 4;
+	scene.count.sphere = 2;
 	scene.spheres = get_spheres(scene.count.sphere);
 
-	scene.count.light = 2;
+	scene.count.light = 3;
 	scene.lights = get_lights(scene.count.light);
 
 	scene.smooth = FALSE;
