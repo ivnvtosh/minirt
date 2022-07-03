@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:40 by ccamie            #+#    #+#             */
-/*   Updated: 2022/07/02 16:02:47 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/07/03 23:49:28 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ t_vec3	ray_trace(t_scene scene, t_ray ray)
 	
 			diffuse = vec3_mapv(vec3_mulv(scene.lights[i].color, vec3_dot(direction, normal)), 0.0, maxf);
 			color = vec3_mulv(vec3_mul(scene.spheres[(int)it.y].color, diffuse), scene.lights[i].intensity);
+
 			allcolor = vec3_add(allcolor, color);
 
 			i += 1;
@@ -234,6 +235,4 @@ void	draw(t_scene scene)
 	{
 		_draw(scene);
 	}
-	vec3_print("loc", scene.camera.location);
-	vec3_print("rot", scene.camera.rotation);
 }

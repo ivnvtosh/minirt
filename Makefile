@@ -6,7 +6,7 @@
 #    By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/26 04:12:14 by ccamie            #+#    #+#              #
-#    Updated: 2022/07/02 16:05:25 by ccamie           ###   ########.fr        #
+#    Updated: 2022/07/03 23:51:55 by ccamie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ CC			=	cc
 CPPFLAGS	=	-I include
 CPPFLAGS	+=	-Wall -Wextra -Werror
 
+CPPFLAGS	+=	-O2
 CPPFLAGS	+=	-g
 
 CFLAGS		=	-framework OpenGL -framework AppKit libmlx/libmlx.a
