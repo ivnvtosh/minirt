@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:40 by ccamie            #+#    #+#             */
-/*   Updated: 2022/07/03 23:49:28 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/07/04 18:56:04 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,15 +117,40 @@ t_bool	is_path_free(t_scene scene, t_ray ray, t_vec3 light)
 	}
 }
 
-t_vec3	ray_trace(t_scene scene, t_ray ray)
+float	my_random(float min, float max)
+{
+	float	number;
+	int		lol;
+
+	lol = rand();
+	if (lol % 2 == 0)
+	{
+		number = lol;
+	}
+	else
+	{
+		number = -lol;
+	}
+	while (number > max)
+	{
+		number -= number / 2;
+	}
+	while (number < min)
+	{
+		number -= number / 2;
+	}
+	return (number);
+}
+		
+t_vec3	ray_trace(t_scene scene, t_ray *ray)
 {
 	t_vec2	it;
 
-	it = hit_sphere(ray, scene.spheres, scene.count.sphere);
+	it = hit_sphere(*ray, scene.spheres, scene.count.sphere);
 
 	if (it.x < 0.0)
 	{
-		return (vec3_newv(0.0));
+		return (vec3_newv(-1.0));
 	}
 	else
 	{
@@ -140,11 +165,10 @@ t_vec3	ray_trace(t_scene scene, t_ray ray)
 			t_vec3	normal;
 			t_ray	newray;
 	
-			newray.origin = at(ray, it.x);
+			newray.origin = at(*ray, it.x);
 			direction = vec3_norm(vec3_sub(scene.lights[i].location, newray.origin));
 			newray.direction = direction;
-			normal = vec3_norm(vec3_add(vec3_sub(ray.origin, scene.spheres[(int)it.y].location), vec3_mulv(ray.direction, it.x)));
-
+			normal = vec3_norm(vec3_add(vec3_sub(ray->origin, scene.spheres[(int)it.y].location), vec3_mulv(ray->direction, it.x)));
 			if (is_path_free(scene, newray, scene.lights[i].location) == FALSE)
 			{	
 				i += 1;
@@ -163,10 +187,76 @@ t_vec3	ray_trace(t_scene scene, t_ray ray)
 
 		}
 
+		t_vec3	normal;
+
+		ray->origin = at(*ray, it.x);
+		
+		normal = vec3_norm(vec3_add(vec3_sub(ray->origin, scene.spheres[(int)it.y].location), vec3_mulv(ray->direction, it.x)));
+		
+		// ray->direction = vec3_sub(ray->direction, vec3_mul(vec3_mulv(vec3_mul(ray->direction, normal), 2), normal));
+
+		ray->direction = vec3_norm(ray->direction);
+
+		// normal.x += my_random(-0.1, 0.1);
+		// normal.y += my_random(-0.1, 0.1);
+		// normal.z += my_random(-0.1, 0.1);
+
+		// printf("%d\n", rand());
+		ray->direction = vec3_norm(normal);
+
+		// ray->origin  = vec3_add(ray->origin, vec3_mulv(scene.spheres[(int)it.y].location, 0.001));
 		allcolor = vec3_mapv(allcolor, 1.0, minf);
 
+		return (scene.spheres[(int)it.y].color);
 		return (allcolor);
 	}
+}
+
+// t_vec3	get_color(t_scene scene, t_ray ray)
+// {
+// 	t_vec2	it;
+
+// 	it = hit_sphere(ray, scene.spheres, scene.count.sphere);
+
+// 	if (it.x < 0.0)
+// 	{
+// 		return (vec3_newv(0.0));
+// 	}
+// 	else
+// 	{
+// 		return (scene.spheres[(int)it.y].color);
+// 	}
+// }
+
+t_vec3	minecraft(t_scene scene, t_ray ray)
+{
+	t_vec3	allcolor;
+	t_vec3	color;
+	int		i;
+
+	allcolor = vec3_newv(1.0);
+	i = 0;
+	while (i < 50)
+	{
+		color = ray_trace(scene, &ray);
+
+		if (color.x == -1.0 && color.y == -1.0 && color.z == -1.0)
+		{
+			// return (vec3_newv(0.5));
+			// color = vec3_new(0.5, 0.5, 0.5);
+			// allcolor = vec3_mul(allcolor, color);
+	return (allcolor);
+
+			i += 1;
+			continue;
+		}
+
+		color = vec3_mulv(color, 0.5);
+		allcolor = vec3_mul(allcolor, color);
+		i += 1;
+	}
+
+	return (allcolor);
 }
 
 void	_draw(t_scene scene)
@@ -182,7 +272,7 @@ void	_draw(t_scene scene)
 		while  (pixel.x < WIDTH)
 		{
 			ray = get_ray(pixel, scene.camera, scene.matrix);
-			color = ray_trace(scene, ray);
+			color = minecraft(scene, ray);
 			__draw(scene.view, pixel, scene.block, color);
 			pixel.x += scene.block;
 		}
@@ -210,11 +300,11 @@ void	draw_smooth(t_scene scene)
 			ray[2] = get_ray(vec2_new(pixel.x + LOL, pixel.y - LOL), scene.camera, scene.matrix);
 			ray[3] = get_ray(vec2_new(pixel.x + LOL, pixel.y + LOL), scene.camera, scene.matrix);
 			ray[4] = get_ray(vec2_new(pixel.x, pixel.y), scene.camera, scene.matrix);
-			color[0] = ray_trace(scene, ray[0]);
-			color[1] = ray_trace(scene, ray[1]);
-			color[2] = ray_trace(scene, ray[2]);
-			color[3] = ray_trace(scene, ray[3]);
-			color[4] = ray_trace(scene, ray[4]);
+			color[0] = minecraft(scene, ray[0]);
+			color[1] = minecraft(scene, ray[1]);
+			color[2] = minecraft(scene, ray[2]);
+			color[3] = minecraft(scene, ray[3]);
+			color[4] = minecraft(scene, ray[4]);
 			// color[0] = vec3_divv(vec3_add(vec3_add(vec3_add(color[0], color[1]), color[2]), color[3]), 4);
 			color[0] = vec3_divv(vec3_add(vec3_add(vec3_add(vec3_add(color[0], color[1]), color[2]), color[3]), color[4]), 5);
 			__draw(scene.view, pixel, scene.block, color[0]);

@@ -6,7 +6,7 @@
 #    By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/26 04:12:14 by ccamie            #+#    #+#              #
-#    Updated: 2022/07/03 23:51:55 by ccamie           ###   ########.fr        #
+#    Updated: 2022/07/04 18:12:45 by ccamie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,8 @@ CPPFLAGS	+=	-g
 
 CFLAGS		=	-framework OpenGL -framework AppKit libmlx/libmlx.a
 
-CFLAGS		+=	-fsanitize=address
-CFLAGS		+=	-fsanitize=undefined
+# CFLAGS		+=	-fsanitize=address
+# CFLAGS		+=	-fsanitize=undefined
 
 ECHO		=	@echo
 

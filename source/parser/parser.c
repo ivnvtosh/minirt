@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:37 by ccamie            #+#    #+#             */
-/*   Updated: 2022/07/02 16:04:59 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/07/04 18:31:29 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_sphere	*get_spheres(int count)
 	spheres[1].location = vec3_new(0.0, 0.0, 1100.0);
 	spheres[1].rotation = vec3_new(0.0, 0.0, 0.0);
 	spheres[1].scale = vec3_new(1.0, 1.0, 1.0);
-	spheres[1].color = vec3_newv(1.0);
+	spheres[1].color = vec3_new(1.0, 0.0, 0.0);
 	spheres[1].radius = 1000.0;
 
 	return (spheres);
