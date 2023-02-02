@@ -6,7 +6,7 @@
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/26 01:21:03 by ccamie            #+#    #+#             */
-/*   Updated: 2022/06/27 10:05:20 by ccamie           ###   ########.fr       */
+/*   Updated: 2022/06/30 02:52:24 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,6 @@
 // # define WIDTH	500
 // # define HEIGHT	500
 
-struct s_obj
-{
-	t_vec3	location;
-	t_vec3	rotation;
-};
-
 struct s_view
 {
 	char	*buffer;
@@ -54,20 +48,56 @@ struct s_mlx
 	void	*canvas;
 };
 
+struct s_cam
+{
+	t_vec3	location;
+	t_vec3	rotation;
+	float	fov;
+	float	focus;
+};
+
+struct s_light
+{
+	t_vec3	location;
+	t_vec3	color;
+	float	intensity;
+};
+
+struct s_sphere
+{
+	t_vec3	location;
+	t_vec3	rotation;
+	t_vec3	scale;
+	t_vec3	color;
+	float	radius;
+};
+
+struct s_count
+{
+	int	light;
+	int	sphere;
+};
+
 struct s_scene
 {
 	struct s_view	view;
 	struct s_mlx	mlx;
-	struct s_obj	camera;
+	struct s_cam	camera;
+	struct s_count	count;
+	struct s_light	*lights;
+	struct s_sphere	*spheres;
 	struct s_vec2	mouse;
 	t_mat			matrix;
-	float			focus;
-	float			fov;
+	int				block;
+	t_bool			smooth;
 };
 
 typedef struct s_obj	t_obj;
 typedef struct s_view	t_view;
 typedef struct s_mlx	t_mlx;
+typedef struct s_cam	t_cam;
+typedef struct s_sphere	t_sphere;
+typedef struct s_light	t_light;
 typedef struct s_scene	t_scene;
 
 void	draw(t_scene scene);
@@ -79,6 +109,7 @@ int		terminate(t_scene *scene);
 
 void	matrix_rotate(t_mat matrix, t_vec3 angle);
 float	maxf(float a, float b);
+float	minf(float a, float b);
 t_vec3	vec3_mulmat(t_vec3 vec, t_mat matrix);
 t_vec3	vec3_mulmat_xy(t_vec3 vec, t_mat matrix);
 

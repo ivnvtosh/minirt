@@ -6,7 +6,7 @@
 #    By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/26 04:12:14 by ccamie            #+#    #+#              #
-#    Updated: 2022/06/27 09:09:11 by ccamie           ###   ########.fr        #
+#    Updated: 2022/07/02 16:05:25 by ccamie           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,6 @@ FUNCTIONS	=	event.c					\
 
 FUNCTIONS	+=	$(addprefix draw/,		\
 				draw.c					\
-				parallelepiped.c		\
 				reflect.c				\
 				sphere.c				\
 				write.c					\
@@ -76,6 +75,7 @@ FUNCTIONS	+=	$(addprefix parser/,	\
 FUNCTIONS	+=	$(addprefix utils/,		\
 				matrix_rotate.c			\
 				maxf.c					\
+				minf.c					\
 				terminate.c				\
 				vec3_mulmat.c			\
 				)
@@ -87,8 +87,10 @@ FUNCTIONS	+=	$(addprefix vec2/,		\
 
 FUNCTIONS	+=	$(addprefix vec3/,		\
 				add.c					\
+				divide.c				\
 				dot_product.c			\
 				lenght.c				\
+				map.c					\
 				multiply.c				\
 				new.c					\
 				normalize.c				\
@@ -115,7 +117,7 @@ $(FOLDER)	:
 				$(MKDIR) $@
 
 libmlx	:
-				make -C libmlx
+				@make -C libmlx
 
 object/%.o	:	source/%.c $(HEADER)
 				@$(CC) $(CPPFLAGS) -c $< -o $@

@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new.c                                              :+:      :+:    :+:   */
+/*   divide.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ccamie <ccamie@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/26 01:21:30 by ccamie            #+#    #+#             */
-/*   Updated: 2022/07/01 01:27:59 by ccamie           ###   ########.fr       */
+/*   Created: 2022/06/30 02:08:27 by ccamie            #+#    #+#             */
+/*   Updated: 2022/07/01 01:27:42 by ccamie           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vec3.h"
 
-t_vec3	vec3_newv(float value)
+t_vec3	vec3_divv(t_vec3 vec, float value)
 {
-	t_vec3	new;
-
-	new.x = value;
-	new.y = value;
-	new.z = value;
-	return (new);
+	vec.x /= value;
+	vec.y /= value;
+	vec.z /= value;
+	return (vec);
 }
 
-t_vec3	vec3_new(float x, float y, float z)
+t_vec3	vec3_div(t_vec3 a, t_vec3 b)
 {
-	t_vec3	new;
-
-	new.x = x;
-	new.y = y;
-	new.z = z;
-	return (new);
+	a.x /= b.x;
+	a.y /= b.y;
+	a.z /= b.z;
+	return (a);
 }
